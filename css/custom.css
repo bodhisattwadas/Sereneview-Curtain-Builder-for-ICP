@@ -2,5 +2,13 @@
     border : 1px solid black;
 } */
 .selected{
-    border : 1px solid black;
+    border : 2px solid black;
 }
+tr th{
+    text-align: center;
+}
+.thumbnail{
+    width: 164px;
+    overflow: hidden;
+    margin: auto;
+  }
