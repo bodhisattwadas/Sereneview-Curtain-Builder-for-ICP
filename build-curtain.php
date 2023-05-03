@@ -7,6 +7,7 @@
 * Author: bodhisattwa das
 * Author URI: https://www.your-site.com/
 **/
+session_start();
 $mScenesArray = ["BP"=>"BeaverPond","FBc"=>"FiftyBalloons","IS"=>"Islamorada","MF"=>"MossbraeFalls",
 			"PG"=>"PalmGrove","PL"=>"ParsonsLanding","SG"=>"StoutGrove","SM"=>"SummerMist",
 			"TO"=>"TetonOverlook","YV"=>"YosemiteValley"];
@@ -14,10 +15,16 @@ $mPatternArray = ["Beige"=>"Beige","Dawn"=>"Dawn","Dusk"=>"Dusk","Fall"=>"Fall",
 				"Meadow"=>"Meadow","Rainbow"=>"Rainbow","Sky"=>"Sky","TanMeadow"=>"TanMeadow",
 				"TealFlower"=>"TealFlower","Winter"=>"Winter"];
 
-
+$mScenesArrayOriginalName = ["BP"=>"Beaver Pond","FBc"=>"Fifty Balloons","IS"=>"Islamorada","MF"=>"Mossbrae Falls",
+				"PG"=>"Palm Grove","PL"=>"Parsons Landing","SG"=>"Stout Grove","SM"=>"Summer Mist",
+				"TO"=>"Teton Overlook","YV"=>"Yosemite Valley"];
+$mPatternArrayOriginalName = ["Beige"=>"Beige","Dawn"=>"Dawn","Dusk"=>"Dusk","Fall"=>"Fall",
+					"Meadow"=>"Meadow","Rainbow"=>"Rainbow","Sky"=>"Sky","TanMeadow"=>"Tan Meadow",
+					"TealFlower"=>"Teal Flower","Winter"=>"Winter"];
 function my_shortcode() {
-	global $mScenesArray,$mPatternArray;
-	session_start();
+	
+	global $mScenesArray,$mPatternArray,$mScenesArrayOriginalName,$mPatternArrayOriginalName;
+	
 	$_SESSION['mVar'] = "hello session";
 	ob_start();
 	$my_plugin_scene_path = plugin_dir_url( __FILE__ ) . 'scenes';
@@ -44,7 +51,8 @@ function my_shortcode() {
 								<div class="card mb-1 scene" id="<?php echo $key; ?>">
 									<img src="<?php echo $my_plugin_scene_path; ?>/<?php echo $key; ?>_<?php echo $element; ?>.jpg" onClick="addScene('<?php echo $key; ?>')" role="button" class="img-thumbnail" alt="Responsive image">
 									<div class="card-body p-1">
-										<p class="card-text text-center text-uppercase"><?php echo $element; ?></p>
+										<p class="card-text text-center text-uppercase"><?php echo $mScenesArrayOriginalName[$key]; ?></p>
+										<!-- <p class="card-text text-center text-uppercase"><?php echo $mScenesArrayOriginalName[$key]; ?></p> -->
 									</div>
 								</div>	
 								</div>
@@ -71,7 +79,7 @@ function my_shortcode() {
 						<div class="card mb-1 pattern" id="<?php echo $key; ?>">
 							<img src="<?php echo $my_plugin_pattern_path; ?>/<?php echo $element; ?>.png" onClick="addPattern('<?php echo $key; ?>')" role="button" class="img-thumbnail" alt="Responsive image">
 							<div class="card-body p-1">
-								<p class="card-text text-center text-uppercase"><?php echo $element; ?></p>
+								<p class="card-text text-center text-uppercase"><?php echo $mPatternArrayOriginalName[$key]; ?></p>
 							</div>
 						</div>	
 						</div>
@@ -106,8 +114,8 @@ function my_shortcode() {
 					<input type="radio" class="btn-check" name="btnradio" id="btnradio4" onClick="addButton(4,'<?php  echo plugin_dir_url( __FILE__ );?>')">
 					<label class="btn btn-outline-info" for="btnradio4">4</label>
 
-					<input type="radio" class="btn-check" name="btnradio" id="btnradio5" onClick="addButton(5,'<?php  echo plugin_dir_url( __FILE__ );?>')">
-					<label class="btn btn-outline-info" for="btnradio5">5</label>
+					<!-- <input type="radio" class="btn-check" name="btnradio" id="btnradio5" onClick="addButton(5,'<?php  echo plugin_dir_url( __FILE__ );?>')">
+					<label class="btn btn-outline-info" for="btnradio5">5</label> -->
 				</div>	
 			</div>		
 			</div>
@@ -167,7 +175,7 @@ function my_shortcode() {
 								<div class="card mb-1 border-0" id="<?php echo $key; ?>">
 									<img src="<?php echo $my_plugin_scene_path; ?>/<?php echo $element[0]; ?>_<?php echo $mScenesArray[$element[0]]; ?>.jpg" class="thumbnail" alt="Responsive image">
 									<div class="card-body p-1">
-										<p class="card-text text-center text-uppercase"><small><?php echo $mScenesArray[$element[0]]; ?></small></p>
+										<p class="card-text text-center text-uppercase"><small><?php echo $mScenesArrayOriginalName[$element[0]]; ?></small></p>
 									</div>
 								</div>
 							</td>
@@ -211,8 +219,8 @@ function my_shortcode() {
 		
 		<div class="card-body">
 		<div class="row">
-			<div class="col-4"><input class="form-control" type="mail" placeholder="Enter your mail here"></div>
-			<div class="col-4"><button type="button" class="btn btn-primary">Mail me a copy!!</button></div>
+			<div class="col-4"><input class="form-control" type="mail" id="email" placeholder="Enter your mail here"></div>
+			<div class="col-4"><button type="button" class="btn btn-primary" onclick="makePDF('<?php  echo plugin_dir_url( __FILE__ );?>')">Mail me a copy!!</button></div>
 			<div class="col-4"></div>
 		</div>
 		

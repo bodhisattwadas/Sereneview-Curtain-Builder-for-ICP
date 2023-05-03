@@ -97,7 +97,7 @@ function saveInfo(){
     dataType: "text",
     success: function(resultData) {
       console.log(resultData);
-      location.reload() ;
+      //location.reload() ;
     }
 });
 }
@@ -110,6 +110,18 @@ function deleteInfo(key){
     success: function(resultData) {
       console.log(resultData);
       location.reload();
+    }
+});
+};
+function makePDF(path){
+  $.ajax({
+    type: 'POST',
+    url: "/wp-content/plugins/build-curtain/builder.php",
+    data: {"create":"create","email":"ss","path":path},
+    dataType: "text",
+    success: function(resultData) {
+      console.log(resultData);
+      //location.reload();
     }
 });
 };
