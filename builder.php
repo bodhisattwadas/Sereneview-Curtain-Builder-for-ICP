@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 require_once __DIR__ . '/vendor/autoload.php';
 if(isset($_POST) && isset($_POST['save'])){
@@ -24,20 +23,15 @@ if(isset($_POST) && isset($_POST['save'])){
     'margin_right' => 5,
     'margin_top' => 5,
     'margin_bottom' => 5]);
-    $url = $_POST['path'] .'pdf_template.html';
+    $url = $_POST['path'] .'template.php?var='.json_encode($_SESSION['mArray']);
     $html = file_get_contents($url);
-
-    // $mpdf->setBasePath($url);
-    // $mpdf->WriteHTML($html);
-    // $mpdf->Output('http://icp.sereneview.plugin/icp/random.pdf');
-    // echo json_encode(array('savedpreviews/random.pdf'));
-    $pdfcontent = '<h1>hello world</h1>';
     $mpdf->WriteHTML($html);
-
     $mpdf->SetDisplayMode('fullpage');
     $mpdf->list_indent_first_level = 0; 
-
+    
     //output in browser
-    $mpdf->Output("random.pdf");
+    $op = "random.pdf";
+    // $op = "random_".rand().".pdf";
+    $mpdf->Output("icp/".$op);
 }
 ?>

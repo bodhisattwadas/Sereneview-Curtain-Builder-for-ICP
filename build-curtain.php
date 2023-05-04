@@ -11,16 +11,16 @@ session_start();
 $mScenesArray = ["BP"=>"BeaverPond","FBc"=>"FiftyBalloons","IS"=>"Islamorada","MF"=>"MossbraeFalls",
 			"PG"=>"PalmGrove","PL"=>"ParsonsLanding","SG"=>"StoutGrove","SM"=>"SummerMist",
 			"TO"=>"TetonOverlook","YV"=>"YosemiteValley"];
-$mPatternArray = ["Beige"=>"Beige","Dawn"=>"Dawn","Dusk"=>"Dusk","Fall"=>"Fall",
-				"Meadow"=>"Meadow","Rainbow"=>"Rainbow","Sky"=>"Sky","TanMeadow"=>"TanMeadow",
-				"TealFlower"=>"TealFlower","Winter"=>"Winter"];
+$mPatternArray = ["Dawn"=>"Dawn","Dusk"=>"Dusk","Rainbow"=>"Rainbow","Fall"=>"Fall","Winter"=>"Winter",
+				"Beige"=>"Beige","Meadow"=>"Meadow","TanMeadow"=>"TanMeadow","TealFlower"=>"TealFlower",
+				"Sky"=>"Sky","Circles"=>"Circles"];
 
 $mScenesArrayOriginalName = ["BP"=>"Beaver Pond","FBc"=>"Fifty Balloons","IS"=>"Islamorada","MF"=>"Mossbrae Falls",
 				"PG"=>"Palm Grove","PL"=>"Parsons Landing","SG"=>"Stout Grove","SM"=>"Summer Mist",
 				"TO"=>"Teton Overlook","YV"=>"Yosemite Valley"];
 $mPatternArrayOriginalName = ["Beige"=>"Beige","Dawn"=>"Dawn","Dusk"=>"Dusk","Fall"=>"Fall",
 					"Meadow"=>"Meadow","Rainbow"=>"Rainbow","Sky"=>"Sky","TanMeadow"=>"Tan Meadow",
-					"TealFlower"=>"Teal Flower","Winter"=>"Winter"];
+					"TealFlower"=>"Teal Flower","Winter"=>"Winter","Circles"=>"Circles"];
 function my_shortcode() {
 	
 	global $mScenesArray,$mPatternArray,$mScenesArrayOriginalName,$mPatternArrayOriginalName;
@@ -201,7 +201,7 @@ function my_shortcode() {
 					<h3>No curtains created yet..</h3>
 			<?php endif;?>
 			<div class="row m-1" id="addMoreSelector">
-				<button class="btn btn-info" onclick="location.reload()"><i class="fa fa-plus"></i> Add more curtains</button>
+				<button class="btn btn-info btn-lg" onclick="location.reload()"><i class="fa fa-plus"></i> Add more curtains</button>
 			</div>  	
 		</div>
 		</div>

@@ -66,7 +66,7 @@ function generatePreview(scene,pattern,num,path){
       '</tr>'+
     '</tbody>'+
   '</table>';
-  mHTML += '<button class="btn btn-sm btn-info" onclick="saveInfo()"><i class="fa fa-floppy-o fa-lg"></i> Save this curtain</button>'
+  mHTML += '<button class="btn btn-lg btn-info" onclick="saveInfo()"><i class="fa fa-floppy-o fa-lg"></i> Save this curtain</button>'
 document.getElementById("previewSelectorAlert").style.display = "none";
 $('#previewSelector').html(mHTML);
 $("#collapseFour").collapse('show');
@@ -97,7 +97,7 @@ function saveInfo(){
     dataType: "text",
     success: function(resultData) {
       console.log(resultData);
-      //location.reload() ;
+      location.reload() ;
     }
 });
 }
