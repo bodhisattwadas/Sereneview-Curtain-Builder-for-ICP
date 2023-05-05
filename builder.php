@@ -16,13 +16,17 @@ if(isset($_POST) && isset($_POST['save'])){
 }elseif(isset($_POST) && isset($_POST['delete'])){
     unset($_SESSION['mArray'][$_POST['key']]);
     echo "success";
-}elseif(isset($_POST['create']) && isset($_POST['email'])){
+}elseif(isset($_POST) && isset($_POST['deleteall'])){
+    session_destroy();
+    session_start();
+}
+elseif(isset($_POST['create']) && isset($_POST['email'])){
     $mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8',
     'format' => 'A4',
     'margin_left' => 5,
     'margin_right' => 5,
-    'margin_top' => 5,
-    'margin_bottom' => 5]);
+    'margin_top' => 10,
+    'margin_bottom' => 10]);
     $url = $_POST['path'] .'template.php?var='.json_encode($_SESSION['mArray']);
     $html = file_get_contents($url);
     $mpdf->WriteHTML($html);

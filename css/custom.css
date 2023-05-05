@@ -1,6 +1,7 @@
 /* .card .selected{
     border : 1px solid black;
 } */
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700');
 .selected{
     border : 2px solid black;
 }
@@ -15,3 +16,6 @@ tr th{
   .card-title{
     font-size: 15px;
   }
+  * {
+    font-family: 'Lato', sans-serif !important;
+}

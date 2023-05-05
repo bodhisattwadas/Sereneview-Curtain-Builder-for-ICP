@@ -1,10 +1,10 @@
 // $('.collapse').collapse();
 mScenesArray = {"BP":"BeaverPond","FBc":"FiftyBalloons","IS":"Islamorada","MF":"MossbraeFalls",
 			"PG":"PalmGrove","PL":"ParsonsLanding","SG":"StoutGrove","SM":"SummerMist",
-			"TO":"TetonOverlook","YV":"YosemiteValley"};
+			"TO":"TetonOverlook","YV":"YosemiteValley","NO":"NoScene"};
 mPatternArray = {"Beige":"Beige","Dawn":"Dawn","Dusk":"Dusk","Fall":"Fall",
 				"Meadow":"Meadow","Rainbow":"Rainbow","Sky":"Sky","TanMeadow":"TanMeadow",
-				"TealFlower":"TealFlower","Winter":"Winter"};
+				"TealFlower":"TealFlower","Winter":"Winter","Circles":"Circles"};
 console.log("working ...");
 document.getElementById("patternSelector").style.display = "none";
 document.getElementById("patternSelectorAlert").style.display = "flex";
@@ -44,29 +44,71 @@ function addButton(num,path){
 function generatePreview(scene,pattern,num,path){
     scenePath = path+'scenes/'+scene+'_'+mScenesArray[scene]+'.jpg';
     patternPath = path+'patterns/'+mPatternArray[pattern]+'.png';
-    mHTML = 
-    '<table class="table">'+
-    '<thead>'+
-      '<tr>'+
-        '<th scope="col">Front</th>'+
-        '<th scope="col">Back</th>'+
-        '<th scope="col"># Panels</th>'+
-      '</tr>'+
-    '</thead>'+
-    '<tbody>'+
-      '<tr>'+
-        '<th scope="row"><img src="'+scenePath+'" class="img-thumbnail" ></img></th>'+
-        '<td><img src="'+patternPath+'" class="img-thumbnail" ></img></td>'+
-        '<td class="text-center align-middle text-info"><h4>1</h4></td>'+
-      '</tr>'+
-      '<tr>'+
-        '<th scope="row"><img src="'+patternPath+'" class="img-thumbnail" ></img></th>'+
-        '<td><img src="'+patternPath+'" class="img-thumbnail" ></img></td>'+
-        '<td class="text-center align-middle text-info"><h4>'+(num-1)+'</h4></td>'+
-      '</tr>'+
-    '</tbody>'+
-  '</table>';
-  mHTML += '<button class="btn btn-lg btn-info" onclick="saveInfo()"><i class="fa fa-floppy-o fa-lg"></i> Save this curtain</button>'
+    if(scene === 'NO'){
+      mHTML = 
+      '<table class="table">'+
+      '<thead>'+
+        '<tr>'+
+          '<th scope="col">Front</th>'+
+          '<th scope="col">Back</th>'+
+          '<th scope="col"># Panels</th>'+
+        '</tr>'+
+      '</thead>'+
+      '<tbody>'+
+        '<tr>'+
+          '<th scope="row"><img src="'+patternPath+'" class="img-thumbnail" ></img></th>'+
+          '<td><img src="'+patternPath+'" class="img-thumbnail" ></img></td>'+
+          '<td class="text-center align-middle text-info"><h4>'+num+'</h4></td>'+
+        '</tr>'+
+      '</tbody>'+
+    '</table>';
+    }else{
+      if(num === 1){
+        mHTML = 
+        '<table class="table">'+
+        '<thead>'+
+          '<tr>'+
+            '<th scope="col">Front</th>'+
+            '<th scope="col">Back</th>'+
+            '<th scope="col"># Panels</th>'+
+          '</tr>'+
+        '</thead>'+
+        '<tbody>'+
+          '<tr>'+
+            '<th scope="row"><img src="'+scenePath+'" class="img-thumbnail" ></img></th>'+
+            '<td><img src="'+patternPath+'" class="img-thumbnail" ></img></td>'+
+            '<td class="text-center align-middle text-info"><h4>1</h4></td>'+
+          '</tr>'+
+        '</tbody>'+
+      '</table>';
+      }else{
+        mHTML = 
+      '<table class="table">'+
+      '<thead>'+
+        '<tr>'+
+          '<th scope="col">Front</th>'+
+          '<th scope="col">Back</th>'+
+          '<th scope="col"># Panels</th>'+
+        '</tr>'+
+      '</thead>'+
+      '<tbody>'+
+        '<tr>'+
+          '<th scope="row"><img src="'+scenePath+'" class="img-thumbnail" ></img></th>'+
+          '<td><img src="'+patternPath+'" class="img-thumbnail" ></img></td>'+
+          '<td class="text-center align-middle text-info"><h4>1</h4></td>'+
+        '</tr>'+
+        '<tr>'+
+          '<th scope="row"><img src="'+patternPath+'" class="img-thumbnail" ></img></th>'+
+          '<td><img src="'+patternPath+'" class="img-thumbnail" ></img></td>'+
+          '<td class="text-center align-middle text-info"><h4>'+(num-1)+'</h4></td>'+
+        '</tr>'+
+      '</tbody>'+
+    '</table>';
+      }
+      
+    }
+    
+  mHTML += '<div class="row"><div class="col-md-3"></div><div class="col-md-6"><button class="btn btn-lg btn-info" onclick="saveInfo()">Save this curtain</button></div><div class="col-md-3"></div></div>';
 document.getElementById("previewSelectorAlert").style.display = "none";
 $('#previewSelector').html(mHTML);
 $("#collapseFour").collapse('show');
@@ -125,3 +167,15 @@ function makePDF(path){
     }
 });
 };
+function clearAll(){
+  $.ajax({
+    type: 'POST',
+    url: "/wp-content/plugins/build-curtain/builder.php",
+    data: {"deleteall":"deleteall"},
+    dataType: "text",
+    success: function(resultData) {
+      console.log(resultData);
+      location.reload() ;
+    }
+});
+}

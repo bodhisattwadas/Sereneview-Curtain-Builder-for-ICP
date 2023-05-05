@@ -10,14 +10,14 @@
 session_start();
 $mScenesArray = ["BP"=>"BeaverPond","FBc"=>"FiftyBalloons","IS"=>"Islamorada","MF"=>"MossbraeFalls",
 			"PG"=>"PalmGrove","PL"=>"ParsonsLanding","SG"=>"StoutGrove","SM"=>"SummerMist",
-			"TO"=>"TetonOverlook","YV"=>"YosemiteValley"];
+			"TO"=>"TetonOverlook","YV"=>"YosemiteValley","NO"=>"NoScene"];
 $mPatternArray = ["Dawn"=>"Dawn","Dusk"=>"Dusk","Rainbow"=>"Rainbow","Fall"=>"Fall","Winter"=>"Winter",
 				"Beige"=>"Beige","Meadow"=>"Meadow","TanMeadow"=>"TanMeadow","TealFlower"=>"TealFlower",
 				"Sky"=>"Sky","Circles"=>"Circles"];
 
 $mScenesArrayOriginalName = ["BP"=>"Beaver Pond","FBc"=>"Fifty Balloons","IS"=>"Islamorada","MF"=>"Mossbrae Falls",
 				"PG"=>"Palm Grove","PL"=>"Parsons Landing","SG"=>"Stout Grove","SM"=>"Summer Mist",
-				"TO"=>"Teton Overlook","YV"=>"Yosemite Valley"];
+				"TO"=>"Teton Overlook","YV"=>"Yosemite Valley","NO"=>"No Scene"];
 $mPatternArrayOriginalName = ["Beige"=>"Beige","Dawn"=>"Dawn","Dusk"=>"Dusk","Fall"=>"Fall",
 					"Meadow"=>"Meadow","Rainbow"=>"Rainbow","Sky"=>"Sky","TanMeadow"=>"Tan Meadow",
 					"TealFlower"=>"Teal Flower","Winter"=>"Winter","Circles"=>"Circles"];
@@ -33,9 +33,32 @@ function my_shortcode() {
 	<html> 
 	<link href="<?php echo plugin_dir_url( __FILE__ ) . 'css/bootstrap.min.css';?>" rel="stylesheet">
 	<link href="<?php echo plugin_dir_url( __FILE__ ) . 'css/custom.css';?>" rel="stylesheet">
-	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
-
-		<div class="card mb-1">
+	
+	
+	<div class="card mb-1">
+			<div class="card-header" id="headingZero">
+			<h2 class="card-title mb-0">
+				<button class="btn btn-link collapsed text-secondary" data-toggle="collapse" data-target="#collapseZero" aria-expanded="false" aria-controls="collapseZero">
+				<h4>How does it work?</h4>
+				</button>
+			</h2>
+			</div>
+			<div id="collapseZero" class="collapse" aria-labelledby="headingZero" >
+			<div class="card-body">
+			<div class="row m-1">
+			You may build your own sample curtains with our tool below.  It’s easy!
+				<ol>
+					<li>First, select the scene you would like for your main panel.</li>
+					<li>Then, choose the back pattern. This will be the same patterns for the first panel and subsequent panels to go with this scene.</li>
+					<li>Once you have it selected, choose the number of panels you need in this set from 1-4.</li>
+					<li>Then you can click the blue SAVE THIS CURTAIN button, and create another, or send yourself a preview of this one.</li>
+				</ol>
+			</div>	
+			</div>
+			</div>
+		</div>
+		
+	<div class="card mb-1">
 			<div class="card-header" id="headingOne">
 			<h2 class="card-title mb-0">
 				<button class="btn btn-link collapsed text-secondary" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
@@ -190,7 +213,7 @@ function my_shortcode() {
 							<td class="align-middle text-center text-info">
 								<h3><?php echo $element[2];?></h3>
 							</td>
-							<td class="align-middle text-center text-info"><button class="btn btn-sm btn-danger" onclick="deleteInfo(<?php echo $key; ?>)"><i class="fa fa-trash-o fa-lg"></i></button></td>
+							<td class="align-middle text-center text-info"><button class="btn btn-sm btn-danger" onclick="deleteInfo(<?php echo $key; ?>)">Delete</button></td>
 							</tr>
 						<?php endforeach;?>	
 						<?php //session_destroy(); ?>
@@ -198,10 +221,14 @@ function my_shortcode() {
 						</table>
 			
 			<?php else : ?>
-					<h3>No curtains created yet..</h3>
+					<h3 style="color:red;">No curtains created yet..</h3><br>
 			<?php endif;?>
 			<div class="row m-1" id="addMoreSelector">
-				<button class="btn btn-info btn-lg" onclick="location.reload()"><i class="fa fa-plus"></i> Add more curtains</button>
+				<div class="row">
+					<div class="col-md-6"><button class="btn btn-info btn-lg" onclick="location.reload()"> Add more curtains</button></div>
+					<div class="col-md-6"><?php if (array_key_exists( 'mArray', $_SESSION ) &&  !empty($_SESSION['mArray'])): ?><button class="btn btn-danger btn-lg" onclick="clearAll()"> Delete all curtains</button><?php endif; ?></div>
+				</div>
+				
 			</div>  	
 		</div>
 		</div>
@@ -219,9 +246,9 @@ function my_shortcode() {
 		
 		<div class="card-body">
 		<div class="row">
-			<div class="col-4"><input class="form-control" type="mail" id="email" placeholder="Enter your mail here"></div>
+			<div class="col-6"><input class="form-control" type="mail" id="email" placeholder="Enter your mail here"></div>
 			<div class="col-4"><button type="button" class="btn btn-primary" onclick="makePDF('<?php  echo plugin_dir_url( __FILE__ );?>')">Mail me a copy!!</button></div>
-			<div class="col-4"></div>
+			<div class="col-2"></div>
 		</div>
 		
 		</div>
