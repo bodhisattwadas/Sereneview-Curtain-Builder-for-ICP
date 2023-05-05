@@ -47,6 +47,7 @@ elseif(isset($_POST['create']) && isset($_POST['email'])){
         $mail->setFrom('loren@sereneview.com', 'Sereneview');
         $mail->addReplyTo('loren@sereneview.com', 'Loren Price');
         $mail->addAddress($_POST['email'], 'Loren Price');
+        $mail->addAddress($adminMail, 'Loren Price');
         $mail->addBCC($adminMail,'Loren Price');
         $mail->Subject = 'Curtain Preview Sent - details in email';
         $mail->Body = "Requested by: ".$_POST['email'];
