@@ -43,7 +43,7 @@ elseif(isset($_POST['create']) && isset($_POST['email'])){
         $op = "Preview_".rand().".pdf";
         $mpdf->Output("icp/".$op);
         /** Mailer client created */
-        $mail = new PHPMailer;
+        $mail = new PHPMailer(true);
         $mail->setFrom('loren@sereneview.com', 'Sereneview');
         $mail->addReplyTo('loren@sereneview.com', 'Loren Price');
         $mail->addAddress($_POST['email'], 'Loren Price');
