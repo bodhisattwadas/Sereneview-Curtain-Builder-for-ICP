@@ -108,7 +108,7 @@ function generatePreview(scene,pattern,num,path){
       
     }
     
-  mHTML += '<div class="row"><div class="col-md-3"></div><div class="col-md-6"><button class="btn btn-lg btn-info" onclick="saveInfo()">Save this curtain</button></div><div class="col-md-3"></div></div>';
+  mHTML += '<div class="row"><button style="width:100%" class="btn btn-lg btn-info btn-block" onclick="saveInfo()">Save this curtain</button></div>';
 document.getElementById("previewSelectorAlert").style.display = "none";
 $('#previewSelector').html(mHTML);
 $("#collapseFour").collapse('show');

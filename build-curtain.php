@@ -225,8 +225,8 @@ function my_shortcode() {
 			<?php endif;?>
 			<div class="row m-1" id="addMoreSelector">
 				<div class="row">
-					<div class="col-md-6"><button class="btn btn-info btn-lg" onclick="location.reload()"> Add more curtains</button></div>
-					<div class="col-md-6"><?php if (array_key_exists( 'mArray', $_SESSION ) &&  !empty($_SESSION['mArray'])): ?><button class="btn btn-danger btn-lg" onclick="clearAll()"> Delete all curtains</button><?php endif; ?></div>
+					<div class="col-md-6"><button style="width:100%" class="btn btn-info btn-lg btn-block" onclick="location.reload()"> Add more curtains</button></div>
+					<div class="col-md-6"><?php if (array_key_exists( 'mArray', $_SESSION ) &&  !empty($_SESSION['mArray'])): ?><button style="width:100%" class="btn btn-danger btn-lg btn-block" onclick="clearAll()"> Delete all curtains</button><?php endif; ?></div>
 				</div>
 				
 			</div>  	
