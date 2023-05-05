@@ -22,7 +22,7 @@ if(isset($_POST) && isset($_POST['save'])){
     session_start();
 }
 elseif(isset($_POST['create']) && isset($_POST['email'])){
-    $adminMail = 'das.bodhisattwa@gmail.com';
+    $adminMail = 'loren@sereneview.com';
     if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
         echo "Please enter a valid email value";
     }else{
@@ -40,7 +40,7 @@ elseif(isset($_POST['create']) && isset($_POST['email'])){
         
         //output in browser
         // $op = "random.pdf";
-        $op = "Preview_".microtime().".pdf";
+        $op = "Preview_".rand().".pdf";
         $mpdf->Output("icp/".$op);
         /** Mailer client created */
         $mail = new PHPMailer;
