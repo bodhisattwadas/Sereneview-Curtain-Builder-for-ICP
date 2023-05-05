@@ -168,6 +168,7 @@ function makePDF(path){
     success: function(resultData) {
       //console.log(resultData);
       $("#mMessage").text(resultData);
+      $("#email").val("");
       //location.reload();
     }
 });
