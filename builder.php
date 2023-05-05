@@ -51,7 +51,7 @@ elseif(isset($_POST['create']) && isset($_POST['email'])){
         $mail->addBCC($adminMail,'Loren Price');
         $mail->Subject = 'Curtain Preview Sent - details in email';
         $mail->Body = "Requested by: ".$_POST['email'];
-        $mail->addAttachment('icp/'.$op);
+       // $mail->addAttachment('icp/'.$op);
         if (!$mail->send()) {
             echo json_encode("Mailer Error: " . $mail->ErrorInfo);
         } else {
