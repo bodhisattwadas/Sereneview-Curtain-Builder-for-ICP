@@ -159,10 +159,15 @@ function makePDF(path){
   $.ajax({
     type: 'POST',
     url: "/wp-content/plugins/build-curtain/builder.php",
-    data: {"create":"create","email":"ss","path":path},
+    data: {
+      "create":"create",
+      "email":$("#email").val(),
+      "path":path
+    },
     dataType: "text",
     success: function(resultData) {
-      console.log(resultData);
+      //console.log(resultData);
+      $("#mMessage").text(resultData);
       //location.reload();
     }
 });

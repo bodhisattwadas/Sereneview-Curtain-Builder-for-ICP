@@ -246,11 +246,13 @@ function my_shortcode() {
 		
 		<div class="card-body">
 		<div class="row">
-			<div class="col-6"><input class="form-control" type="mail" id="email" placeholder="Enter your mail here"></div>
+			<div class="col-6"><input class="form-control" type="mail" id="email" placeholder="Enter your mail here" required></div>
 			<div class="col-4"><button type="button" class="btn btn-primary" onclick="makePDF('<?php  echo plugin_dir_url( __FILE__ );?>')">Mail me a copy!!</button></div>
 			<div class="col-2"></div>
 		</div>
-		
+		<div class="row">
+			<small><b><p id="mMessage"></p></b></small>
+		</div>
 		</div>
 		</div>
 		</div>
