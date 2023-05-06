@@ -21,6 +21,30 @@ $mScenesArrayOriginalName = ["BP"=>"Beaver Pond","FBc"=>"Fifty Balloons","IS"=>"
 $mPatternArrayOriginalName = ["Beige"=>"Beige","Dawn"=>"Dawn","Dusk"=>"Dusk","Fall"=>"Fall",
 					"Meadow"=>"Meadow","Rainbow"=>"Rainbow","Sky"=>"Sky","TanMeadow"=>"Tan Meadow",
 					"TealFlower"=>"Teal Flower","Winter"=>"Winter","Circles"=>"Circles"];
+global $jal_db_version;
+$jal_db_version = '1.1';
+
+function jal_install() {
+	global $wpdb;
+	global $jal_db_version;
+
+	$table_name = $wpdb->prefix . 'icp_curtain_builder';
+	
+	$charset_collate = $wpdb->get_charset_collate();
+
+	$sql = "CREATE TABLE $table_name (
+		id int(9) NOT NULL AUTO_INCREMENT,
+		time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+		email varchar(255) NOT NULL,
+		url varchar(55) DEFAULT '' NOT NULL,
+		PRIMARY KEY  (id)
+	) $charset_collate;";
+
+	require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+	dbDelta( $sql );
+
+	add_option( 'jal_db_version', $jal_db_version );
+}					
 function my_shortcode() {
 	
 	global $mScenesArray,$mPatternArray,$mScenesArrayOriginalName,$mPatternArrayOriginalName;
@@ -268,3 +292,4 @@ function my_shortcode() {
 }
 
 add_shortcode('icp-sereneview', 'my_shortcode');
+register_activation_hook( __FILE__, 'jal_install' );

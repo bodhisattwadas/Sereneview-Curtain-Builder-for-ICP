@@ -166,7 +166,11 @@ function makePDF(path){
     },
     dataType: "json",
     success: function(resultData) {
-      ht = '<br><h2><a style="font-size: 20px;margin:5px;" href="' + resultData[0] + '" target="_blank">Click here to download your PDF</a></h2>';
+      ht = '<br><h4>'+resultData[0]+'</h4>';
+      if(resultData[1] != 'error'){
+        ht = '<br><h2><a style="font-size: 20px;margin:5px;" href="' + resultData[0] + '" target="_blank">Click here to download your PDF</a></h2>';
+      }
+      
       $("#mMessage").html(ht);
       $("#email").val("");
     }
