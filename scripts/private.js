@@ -158,18 +158,17 @@ function deleteInfo(key){
 function makePDF(path){
   $.ajax({
     type: 'POST',
-    url: "/wp-content/plugins/build-curtain/builder.php",
+    url: "/wp-content/plugins/build-curtain/mailer.php",
     data: {
       "create":"create",
       "email":$("#email").val(),
       "path":path
     },
-    dataType: "text",
+    dataType: "json",
     success: function(resultData) {
-      //console.log(resultData);
-      $("#mMessage").text(resultData);
+      ht = '<br><h2><a style="font-size: 20px;margin:5px;" href="' + resultData[0] + '" target="_blank">Click here to download your PDF</a></h2>';
+      $("#mMessage").html(ht);
       $("#email").val("");
-      //location.reload();
     }
 });
 };
