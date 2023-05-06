@@ -47,12 +47,12 @@ if(isset($_POST['create']) && isset($_POST['email'])){
         $mail->Subject = 'Curtain Preview Sent - details in email';
         $mail->Body = $body;
         $mail->isHTML(true);
-        echo json_encode(array($url,'success'));
-        // if (!$mail->send()) {
-        //         echo json_encode(array($mail->ErrorInfo,'error'));
-        //     } else {
-        //         echo json_encode(array($url,'success'));
-        // }
+        // echo json_encode(array($url,'success'));
+        if (!$mail->send()) {
+                echo json_encode(array($mail->ErrorInfo,'error'));
+            } else {
+                echo json_encode(array($url,'success'));
+        }
     }
     
 }
