@@ -1,13 +1,16 @@
 <?php
 /**
 * Plugin Name: ICP Sereneview build curtain
-* Plugin URI: https://www.your-site.com/
-* Description: Test.
+* Plugin URI: https://www.sereneview.com/
+* Description: Curtain Builder For ICP.
 * Version: 0.1
 * Author: bodhisattwa das
-* Author URI: https://www.your-site.com/
+* Author URI: https://www.sereneview.com/
 **/
 session_start();
+// define( 'WP_DEBUG', true );
+// define( 'WP_DEBUG_DISPLAY', true );
+// define( 'WP_DEBUG_LOG', true );
 $mScenesArray = ["BP"=>"BeaverPond","FBc"=>"FiftyBalloons","IS"=>"Islamorada","MF"=>"MossbraeFalls",
 			"PG"=>"PalmGrove","PL"=>"ParsonsLanding","SG"=>"StoutGrove","SM"=>"SummerMist",
 			"TO"=>"TetonOverlook","YV"=>"YosemiteValley","NO"=>"NoScene"];
@@ -21,6 +24,8 @@ $mScenesArrayOriginalName = ["BP"=>"Beaver Pond","FBc"=>"Fifty Balloons","IS"=>"
 $mPatternArrayOriginalName = ["Beige"=>"Beige","Dawn"=>"Dawn","Dusk"=>"Dusk","Fall"=>"Fall",
 					"Meadow"=>"Meadow","Rainbow"=>"Rainbow","Sky"=>"Sky","TanMeadow"=>"Tan Meadow",
 					"TealFlower"=>"Teal Flower","Winter"=>"Winter","Circles"=>"Circles"];
+
+
 global $jal_db_version;
 $jal_db_version = '1.1';
 
