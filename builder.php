@@ -42,20 +42,23 @@ elseif(isset($_POST['create']) && isset($_POST['email'])){
         // $op = "random.pdf";
         $op = "Preview_".rand().".pdf";
         $mpdf->Output("icp/".$op);
+        $url = 'https://sereneview.com/wp-content/plugins/build-curtain/icp/'.$op;
         /** Mailer client created */
+        $adminMail = 'loren@sereneview.com';
+        $body = "Requested by: ".$_POST['email'];
+        $body .= '<h2><a href="'.$url.'">Click Here to download your curtain preview file.</a><h2>';
         $mail = new PHPMailer(true);
-        $mail->setFrom('loren@sereneview.com', 'Sereneview');
-        $mail->addReplyTo('loren@sereneview.com', 'Loren Price');
+        $mail->setFrom($adminMail, 'Sereneview');
+        $mail->addReplyTo($adminMail, 'Loren Price');
         $mail->addAddress($_POST['email'], 'Loren Price');
-        $mail->addAddress($adminMail, 'Loren Price');
         $mail->addBCC($adminMail,'Loren Price');
         $mail->Subject = 'Curtain Preview Sent - details in email';
-        $mail->Body = "Requested by: ".$_POST['email'];
-       // $mail->addAttachment('icp/'.$op);
+        $mail->Body = $body;
+        $mail->isHTML(true);
         if (!$mail->send()) {
-            echo json_encode("Mailer Error: " . $mail->ErrorInfo);
-        } else {
-            echo json_encode("PDF created and mailed successfully.");
+                    echo "Mailer Error: " . $mail->ErrorInfo;
+            } else {
+                    echo "PDF created and mailed successfully.";
         }
     }
     
