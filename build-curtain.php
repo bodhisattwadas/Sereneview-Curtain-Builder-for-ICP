@@ -27,7 +27,7 @@ $mPatternArrayOriginalName = ["Beige"=>"Beige","Dawn"=>"Dawn","Dusk"=>"Dusk","Fa
 
 
 global $jal_db_version;
-$jal_db_version = '1.1';
+$jal_db_version = '1.2';
 
 function jal_install() {
 	global $wpdb;
@@ -39,9 +39,9 @@ function jal_install() {
 
 	$sql = "CREATE TABLE $table_name (
 		id int(9) NOT NULL AUTO_INCREMENT,
-		time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
-		email varchar(255) NOT NULL,
-		url varchar(55) DEFAULT '' NOT NULL,
+		time datetime ,
+		email varchar(255) ,
+		url text ,
 		PRIMARY KEY  (id)
 	) $charset_collate;";
 

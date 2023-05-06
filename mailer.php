@@ -2,7 +2,7 @@
 session_start();
 use PHPMailer\PHPMailer\PHPMailer;
 require_once __DIR__ . '/vendor/autoload.php';
-
+require_once($_SERVER['DOCUMENT_ROOT'] . '/wp-config.php');
 
 if(isset($_POST['create']) && isset($_POST['email'])){
     global $wpdb;
@@ -27,6 +27,13 @@ if(isset($_POST['create']) && isset($_POST['email'])){
         $op = "Preview_".rand().".pdf";
         $mpdf->Output("icp/".$op);
         $url = siteURL().'wp-content/plugins/build-curtain/icp/'.$op;
+
+        $tableName = $wpdb->prefix . 'icp_curtain_builder';
+        $wpdb->insert($tableName, array(
+            'email' => $_POST['email'],
+            'url' => $url,
+            'time' => date('Y-m-d H:i:s')
+        ));
         
         /** Mailer client created */
         $adminMail = 'loren@sereneview.com';
@@ -40,11 +47,12 @@ if(isset($_POST['create']) && isset($_POST['email'])){
         $mail->Subject = 'Curtain Preview Sent - details in email';
         $mail->Body = $body;
         $mail->isHTML(true);
-        if (!$mail->send()) {
-                echo json_encode(array($mail->ErrorInfo,'error'));
-            } else {
-                echo json_encode(array($url,'success'));
-        }
+        echo json_encode(array($url,'success'));
+        // if (!$mail->send()) {
+        //         echo json_encode(array($mail->ErrorInfo,'error'));
+        //     } else {
+        //         echo json_encode(array($url,'success'));
+        // }
     }
     
 }
