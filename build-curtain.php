@@ -28,7 +28,54 @@ $mPatternArrayOriginalName = ["Beige"=>"Beige","Dawn"=>"Dawn","Dusk"=>"Dusk","Fa
 
 global $jal_db_version;
 $jal_db_version = '1.2';
+add_action('admin_menu', 'test_plugin_setup_menu');
+ 
+function test_plugin_setup_menu(){
+    add_menu_page( 'ICP Builder', 'ICP Builder', 'manage_options', 'icp-builder', 'test_init' );
+}
+function test_init(){
+	global $wpdb;
+    $tableName = $wpdb->prefix . 'icp_curtain_builder';
+	$query = "select * from ".$tableName;
+	$results = $wpdb->get_results($query);
+	$tableBody = '<link href="'.plugin_dir_url( __FILE__ ) . 'css/bootstrap.min.css'.'" rel="stylesheet">';
+	foreach($results as $result){
+		$tableBody .= '
+		<tr>'.
+                '<td>'.$result->id.'</td>'.
+                '<td>'.$result->email.'</td>'.
+                '<td><a href="'.$result->url.'" target="_blank">Download Image</a></td>'.
+                '<td>'.$result->time.'</td>'.
+            '</tr>
+		';
+	}
+	$html = '
+	<div class="container">
+        <h2 class="text-center">Download Details</h2>
+    <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+        <table id="example" class="table table-striped" style="width:100%">
+        <thead>
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Email</th>
+            <th scope="col">Curtain URL</th>
+            <th scope="col">Time</th>
+            </tr>
+        </thead>
+        <tbody>'.
+        $tableBody
+		.'</tbody>
+        </table>
+    </div>
+    <div class="col-md-1"></div>
+</div>
+</div>
+	';
+	echo $html;
 
+}
 function jal_install() {
 	global $wpdb;
 	global $jal_db_version;
