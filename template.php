@@ -48,7 +48,8 @@ $mPatternArrayOriginalName = ["Beige"=>"Beige","Dawn"=>"Dawn","Dusk"=>"Dusk","Fa
 <div class="row">
     <div class="col-sm-12" style="text-align: center;text-align: center;">
         <h1><img width="180" src="img/icp_logo.png">
-          <!-- <small style="font-size: 12px;">Hospital Curtains | Scenic Overheads | Wall Treatments</small> -->
+        <br>
+        <small style="font-size: 11px;">For more information, call <a href="tel:800-405-3044">800-405-3044</a></small>
         </h1>
     </div>
 </div>

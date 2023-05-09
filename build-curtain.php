@@ -121,13 +121,15 @@ function my_shortcode() {
 			</div>
 			<div id="collapseZero" class="collapse" aria-labelledby="headingZero" >
 			<div class="card-body">
-			<div class="row m-1">
+			<div class="row m-1" >
 			You may build your own sample curtains with our tool below.  It’s easy!
 				<ol>
 					<li>First, select the scene you would like for your main panel.</li>
-					<li>Then, choose the back pattern. This will be the same patterns for the first panel and subsequent panels to go with this scene.</li>
+					<li>Then, choose a pattern for the backside and any additional panels to cover the length of the track.</li>
+					<li>Each panel is 9’/108”. Add additional 9’ panels to cover the length of the track.</li>
+					<!-- <li>Then, choose the back pattern. This will be the same patterns for the first panel and subsequent panels to go with this scene.</li>
 					<li>Once you have it selected, choose the number of panels you need in this set from 1-4.</li>
-					<li>Then you can click the blue SAVE THIS CURTAIN button, and create another, or send yourself a preview of this one.</li>
+					<li>Then you can click the blue SAVE THIS CURTAIN button, and create another, or send yourself a preview of this one.</li> -->
 				</ol>
 			</div>	
 			</div>
@@ -295,7 +297,7 @@ function my_shortcode() {
 						<?php //session_destroy(); ?>
 						</tbody>
 						</table>
-			
+						<!-- <div class="row m-1 text-danger"><h4>Enter your email to generate the preview and download it..</h4></div> -->
 			<?php else : ?>
 					<h3 style="color:red;">No curtains created yet..</h3><br>
 			<?php endif;?>
@@ -304,7 +306,9 @@ function my_shortcode() {
 					<div class="col-md-6"><button style="width:100%" class="btn btn-info btn-lg btn-block" onclick="location.reload()"> Add more curtains</button></div>
 					<div class="col-md-6"><?php if (array_key_exists( 'mArray', $_SESSION ) &&  !empty($_SESSION['mArray'])): ?><button style="width:100%" class="btn btn-danger btn-lg btn-block" onclick="clearAll()"> Delete all curtains</button><?php endif; ?></div>
 				</div>
-				
+				<?php if (array_key_exists( 'mArray', $_SESSION ) &&  !empty($_SESSION['mArray'])): ?>
+					<div class="mt-4 text-danger"><h4>Enter your email below to generate the preview and download it..</h4></div>
+				<?php endif; ?>	
 			</div>  	
 		</div>
 		</div>
@@ -314,13 +318,15 @@ function my_shortcode() {
 		<div class="card mb-1">
 		<div class="card-header">
 		<h5 class="card-title mb-0">
+			
 			<button class="btn btn-link collapsed text-secondary"  aria-expanded="false">
-			<h4>6. Mail me the PDF</h4>
+			<h4>6. Download and Mail me the PDF</h4>
 			</button>
 		</h5>
 		</div>
 		
 		<div class="card-body">
+		<div class="row m-1"><b>Enter an email below to download the PDF, it might that takes 5-10 secs. to generate.</b></div>
 		<div class="row">
 			<div class="col-6"><input class="form-control" type="mail" id="email" placeholder="Enter your mail here" required></div>
 			<div class="col-4"><button type="button" class="btn btn-primary" onclick="makePDF('<?php  echo plugin_dir_url( __FILE__ );?>')">Mail me a copy!!</button></div>
@@ -328,6 +334,9 @@ function my_shortcode() {
 		</div>
 		<div class="row">
 			<small><b><p id="mMessage"></p></b></small>
+		</div>
+		<div class="row">
+			<small class="text-info"><b>We’ll get you a quote based on your selection. If you need more information, call <a href="tel:800-405-3044">800-405-3044</a></b></small>
 		</div>
 		</div>
 		</div>

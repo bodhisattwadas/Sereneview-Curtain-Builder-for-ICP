@@ -38,13 +38,15 @@ if(isset($_POST['create']) && isset($_POST['email'])){
         /** Mailer client created */
         $adminMail = 'loren@sereneview.com';
         $body = "Requested by: ".$_POST['email'];
+        $body .= 'Thank you for visiting our site and selecting your choices for Rapid Refresh&#174; Sereneview&#174; & Rapid Refresh Armor	&#8482; privacy curtains. 
+        Is there any additional information we should know for your quote? For more information, call us at <a href="tel:800-405-3044">800-405-3044</a>';
         $body .= '<h2><a href="'.$url.'">Click Here to download your curtain preview file.</a><h2>';
         $mail = new PHPMailer(true);
         $mail->setFrom($adminMail, 'Sereneview');
         $mail->addReplyTo($adminMail, 'Loren Price');
         $mail->addAddress($_POST['email'], 'Loren Price');
         $mail->addBCC($adminMail,'Loren Price');
-        $mail->Subject = 'Curtain Preview Sent - details in email';
+        $mail->Subject = 'Rapid Refresh&#174; Curtain Preview';
         $mail->Body = $body;
         $mail->isHTML(true);
         // echo json_encode(array($url,'success'));
