@@ -111,7 +111,7 @@ function my_shortcode() {
 	<link href="<?php echo plugin_dir_url( __FILE__ ) . 'css/custom.css';?>" rel="stylesheet">
 	
 	
-	<div class="card mb-1">
+	<!-- <div class="card mb-1">
 			<div class="card-header" id="headingZero">
 			<h2 class="card-title mb-0">
 				<button class="btn btn-link collapsed text-secondary" data-toggle="collapse" data-target="#collapseZero" aria-expanded="false" aria-controls="collapseZero">
@@ -127,20 +127,18 @@ function my_shortcode() {
 					<li>First, select the scene you would like for your main panel.</li>
 					<li>Then, choose a pattern for the backside and any additional panels to cover the length of the track.</li>
 					<li>Each panel is 9’/108”. Add additional 9’ panels to cover the length of the track.</li>
-					<!-- <li>Then, choose the back pattern. This will be the same patterns for the first panel and subsequent panels to go with this scene.</li>
-					<li>Once you have it selected, choose the number of panels you need in this set from 1-4.</li>
-					<li>Then you can click the blue SAVE THIS CURTAIN button, and create another, or send yourself a preview of this one.</li> -->
 				</ol>
 			</div>	
 			</div>
 			</div>
-		</div>
+		</div> -->
 		
 	<div class="card mb-1">
 			<div class="card-header" id="headingOne">
 			<h2 class="card-title mb-0">
 				<button class="btn btn-link collapsed text-secondary" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-				<h4>1. Choose the Curtain scene</h4>
+				<h4>1. First, select the scene you want for your scenic panel.</h4>
+				<!-- <h4>1. Choose the Curtain scene</h4> -->
 				</button>
 			</h2>
 			</div>
@@ -167,7 +165,8 @@ function my_shortcode() {
 			<div class="card-header" id="headingTwo">
 			<h5 class="card-title mb-0">
 				<button class="btn btn-link collapsed text-secondary" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-				<h4>2. Choose Curtain Pattern</h4>
+				<h4>2. Then, choose a pattern for the backside and any additional panels to cover the length of the track.</h4>
+				<!-- <h4>2. Choose Curtain Pattern</h4> -->
 				</button>
 			</h5>
 			</div>
@@ -194,7 +193,8 @@ function my_shortcode() {
 			<div class="card-header" id="headingThree">
 			<h5 class="card-title mb-0">
 				<button class="btn btn-link collapsed text-secondary" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-				<h4>3. Select How many Panels do you want ?</h4>
+				<h4>3. Each panel is 9’/108” wide. Add additional 9’ panels to cover the length of the track.</h4>
+				<!-- <h4>3. Select How many Panels do you want ?</h4> -->
 				</button>
 			</h5>
 			</div>
@@ -228,7 +228,8 @@ function my_shortcode() {
 		<div class="card-header" id="headingFour">
 		<h5 class="card-title mb-0">
 			<button class="btn btn-link collapsed text-secondary" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-			<h4>4. Preview</h4>
+			<h4>4. Then you can click the blue SAVE THIS CURTAIN button and create another, or send yourself a preview of this one.</h4>
+			<!-- <h4>4. Preview</h4> -->
 			</button>
 		</h5>
 		</div>
