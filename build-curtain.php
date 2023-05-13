@@ -137,7 +137,7 @@ function my_shortcode() {
 			<div class="card-header" id="headingOne">
 			<h2 class="card-title mb-0">
 				<button class="btn btn-link collapsed text-secondary" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-				<h4>1. First, select the scene you want for your scenic panel.</h4>
+				<h4>1. Choose the Rapid Refresh® Sereneview® Curtain Scene.</h4>
 				<!-- <h4>1. Choose the Curtain scene</h4> -->
 				</button>
 			</h2>
@@ -165,7 +165,7 @@ function my_shortcode() {
 			<div class="card-header" id="headingTwo">
 			<h5 class="card-title mb-0">
 				<button class="btn btn-link collapsed text-secondary" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-				<h4>2. Then, choose a pattern for the backside and any additional panels to cover the length of the track.</h4>
+				<h4>2. Choose the Rapid Refresh® Armor™ Curtain Pattern.</h4>
 				<!-- <h4>2. Choose Curtain Pattern</h4> -->
 				</button>
 			</h5>
